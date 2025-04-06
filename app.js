@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const uuid = require("uuid");
 const { getProjectByWriteId, getProjectByReadId } = require("./utils");
+const bdd = require('./BDD');
 
 const PORT = process.env.PORT ?? 3232;
 const app = express();

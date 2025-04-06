@@ -6,3 +6,31 @@ datasource db {
 generator client {
     provider = "prisma-client-js"
 }
+
+model Project {
+	id		Int	@id	@default(autoincrement())
+	name		String
+	read_id		String	@unique
+	write_id	String	@unique
+	buttons		Button[]
+	objects		Object[]
+}
+
+model Button {
+	id		Int	@id	@default(autoincrement())
+	name		String	@unique
+	link		String
+	project		Project	@relation(fields: [projectId], references: [id])
+	projectId	Int
+	objects		Object[]
+}
+
+model Object {
+	id		Int	@id	@default(autoincrement())
+	index		Float	@db.DoublePrecision
+	data		String	@db.Text
+	button		Button	@relation(fields: [buttonId], references: [id])
+	buttonId	Int
+	project		Project @relation(fields: [projectId], references: [id])
+	projectId	Int
+}
