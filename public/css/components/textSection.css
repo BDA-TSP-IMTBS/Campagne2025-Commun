@@ -1,0 +1,9 @@
+.text-container {
+    width: 80%;
+    max-width: 300px;
+    padding: 10px 20px;
+    gap: 10px;
+    color: var(--white);
+    background-color: var(--yellow);
+    border-radius: 10px;
+}

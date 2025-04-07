@@ -1,22 +1,7 @@
-<style>
-    .main-button {
-        height: 80px;
-        width: 80%;
-        background-color: var(--orange);
-        border: none;
-        border-radius: var(--border-radius);
-        color: var(--white);
-    }
-
-    .main-button:hover {
-        transform: scale(1.05);
-        transition: all ease 0.1s;
-    }
-</style>
-<button class="main-button">
+<button class="button main-button">
     <% if (title) { %>
         <h2><%= title %></h2>
     <% } else{ %>
         <h2>Ajouter un titre</h2>
     <% } %>
-    </button>
+</button>

@@ -2,27 +2,18 @@
 <html lang="fr">
 <head>
     <%- include('../partials/head'); %>
-    <style>
-        .button-container{
-            width: 100%;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--gap);
-            margin-top: 60px;
-        }
-    </style>
 </head>
 <body>
     <h1>
         Nom du projet
     </h1>
-    <div class="button-container">
+    <div class="homepage-button-container">
         <%- include('../partials/mainButton', {title: "Tréso"}); %>
         <%- include('../partials/mainButton', {title: "Com"}); %>
         <%- include('../partials/mainButton', {title: "Ritz"}); %>
         <%- include('../partials/mainButton', {title: ""});%>
     </div>
+    <%- include('../partials/addNew'); %>
+
 </body>
 </html>
