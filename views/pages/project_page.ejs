@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <%- include('../partials/head'); %>
     <title><%= name %> - <%= subname %></title>
 </head>
 <body>
@@ -16,40 +14,41 @@
     <% objects.forEach(object => { %>
         <% switch (object.data["type"]) {
         case "text": %>
-        <%- include("components/text", {data: object.data}) %>
+        <%- include("../partials/textSection", {data: object.data}) %>
         <% break;
         case "image": %>
-        <%- include("components/image", {data: object.data}) %>
+        <%- include("../partials/imageSection", {data: object.data}) %>
         <% break;
         case "link": %>
-        <%- include("components/link", {data: object.data}) %>
+        <%- include("../partials/linkButton", {data: object.data}) %>
         <% break
         } %>
     <% }) %>
 
     <% if (writeId) { %>
         <form id="create-text-form" action="/create_component" method="post">
-            <textarea name="text" id="text" placeholder="" hidden required maxlength="2000"></textarea>
+            <textarea name="text" id="text" placeholder="" hidden required maxlength="2000"
+                      class="big-input"></textarea>
             <input value=<%= pageId %> type="text" name="pageId" hidden>
             <input value=<%= writeId %> type="text" name="writeId" hidden>
         </form>
-        <button id="add-text-button">Ajouter un texte</button>
+        <button id="add-text-button" class="button" style="background-color: var(--yellow);">Ajouter un texte</button>
 
         <form id="create-link-form" action="/create_component" method="post">
             <input type="text" name="link" id="link" placeholder="Nouveau lien" hidden required
-                   maxlength="200"/>
+                   maxlength="200" class="big-input"/>
             <input value=<%= pageId %> type="text" name="pageId" hidden>
             <input value=<%= writeId %> type="text" name="writeId" hidden>
         </form>
-        <button id="add-link-button">Ajouter un lien</button>
+        <button id="add-link-button" class="button" style="background-color: var(--yellow);">Ajouter un lien</button>
 
         <form id="create-image-form" action="/create_component" method="post">
             <input type="text" name="image_link" id="image_link" placeholder="Lien vers l'image" hidden required
-                   maxlength="200"/>
+                   maxlength="200" class="big-input"/>
             <input value=<%= pageId %> type="text" name="pageId" hidden>
             <input value=<%= writeId %> type="text" name="writeId" hidden>
         </form>
-        <button id="add-image-button">Ajouter une image</button>
+        <button id="add-image-button" class="button" style="background-color: var(--yellow);">Ajouter une image</button>
 
     <% } %>
 </div>

@@ -16,7 +16,7 @@ if (addButtonButton) {
     if (!inputShown) {
       inputShown = true;
       buttonNameInput.hidden = false;
-      addButtonButton.innerHTML = "Créer le bouton";
+      addButtonButton.innerHTML = "+";
     } else {
       form.submit();
     }

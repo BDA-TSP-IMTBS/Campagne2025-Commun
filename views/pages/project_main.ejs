@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <%- include('../partials/head'); %>
     <title><%= name %></title>
 </head>
 <body>
@@ -22,16 +20,16 @@
     </div>
 
     <% buttons.forEach(button => { %>
-        <%- include("components/button", {name: button.name, writeId: writeId, id: button.id, url: URL + 'projects/' + (writeId ? writeId : readId) + "/" + button.id}); %>
+        <%- include("../partials/mainButton", {name: button.name, writeId: writeId, id: button.id, url: URL + 'projects/' + (writeId ? writeId : readId) + "/" + button.id}); %>
     <% }); %>
 
     <% if (writeId) { %>
-        <form id="create-button-form" action="/create_button" method="post">
-            <input type="text" name="name" id="button-name" placeholder="Nom du nouveau bouton" hidden required
+        <form id="create-button-form" action="/create_button" method="post" class="buttons-form">
+            <input type="text" name="name" id="button-name" placeholder="Nom du nouveau bouton" class="big-input" hidden required
                    maxlength="20"/>
             <input value=<%= writeId %> type="text" id="writeId" name="writeId" hidden>
         </form>
-        <button id="add-button">Ajouter un bouton</button>
+        <button id="add-button" class="button" style="background-color: var(--green)">Ajouter un bouton</button>
     <% } %>
 </div>
 

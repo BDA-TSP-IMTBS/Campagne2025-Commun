@@ -6,7 +6,7 @@ const router = express.Router();
 const URL = process.env.URL ?? "http://127.0.0.1:3232/"
 
 router.get("/", (req, res) => {
-    res.render("index");
+    res.render("pages/index");
 });
 
 
@@ -35,7 +35,7 @@ router.get("/projects/:id", async (req, res) => {
     const buttons = await bdd.getButtons(project.id);
 
     // Rendering
-    res.render("project_main", {
+    res.render("pages/project_main", {
         name: project.name,
         buttons,
         readId,
@@ -71,16 +71,17 @@ router.get("/projects/:id/:pageId", async (req, res) => {
     const objects = await bdd.getComponents(project.id);
     for (const object of objects) {
         object.data = JSON.parse(object.data);
+        object.data["id"] = object.id;
     }
 
     // Rendering
-    res.render("project_page", {name: project.name, subname: button.name, objects, writeId, pageId});
+    res.render("pages/project_page", {name: project.name, subname: button.name, objects, writeId, pageId});
 });
 
 router.use("/404", (req, res) => {
     res.status(404);
     if (req.accepts("html")) {
-        res.render("404");
+        res.render("pages/404");
         return;
     }
 

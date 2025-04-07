@@ -1,1 +1,9 @@
-<button class="button link-button"></button>
+<a target="_blank" href=<%= data["link"] %> class="button link-button"><%= data["link"] %></a>
+<% if (writeId) { %>
+    <form action="/delete_component" method="post">
+        <input type="text" name="id" id="id" value=<%= data["id"] %> hidden>
+        <input type="text" name="writeId" id="writeId" value=<%= writeId %> hidden>
+        <input type="text" name="pageId" id="pageId" value=<%= pageId %> hidden>
+        <input class="delete-button" type="submit" value="X"/>
+    </form>
+<% } %>

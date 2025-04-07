@@ -2,15 +2,25 @@
     border: none;
     background-color: var(--dark-blue);
     border-radius: 100%;
-    width: 80px;
+    width: 40px;
     color: var(--white);
-    font-size: 4rem;
+    font-size: 200%;
     display: flex;
     justify-content: center;
     align-items: center;
     aspect-ratio: 1;
+    cursor: pointer;
 }
+
 .add-new:hover {
     transform: scale(1.05);
     transition: all ease 0.1s;
+}
+
+
+.big-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
 }

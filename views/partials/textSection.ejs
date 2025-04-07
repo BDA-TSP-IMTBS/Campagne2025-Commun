@@ -1,4 +1,12 @@
 <div class="text-container">
-    <h1>Titre du texte</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, nemo debitis modi ipsum accusantium mollitia consequatur numquam quasi nostrum quis amet illo vero sequi alias totam? Quasi quod quis perferendis.</p>
+    <h1><%= data["text"] %></h1>
+    <p>BOTTOM TEXT</p>
 </div>
+<% if (writeId) { %>
+    <form action="/delete_component" method="post">
+        <input type="text" name="id" id="id" value=<%= data["id"] %> hidden>
+        <input type="text" name="writeId" id="writeId" value=<%= writeId %> hidden>
+        <input type="text" name="pageId" id="pageId" value=<%= pageId %> hidden>
+        <input class="delete-button" type="submit" value="X"/>
+    </form>
+<% } %>

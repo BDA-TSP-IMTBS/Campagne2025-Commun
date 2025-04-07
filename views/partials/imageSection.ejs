@@ -1,7 +1,11 @@
 <div class="image-container">
-    <% if (image) { %>
-        <img src=<%= image %>>
-    <% } else{ %>
-        <h2>Ajouter une image</h2>
-    <% } %>
+    <img src=<%= data["image_link"] %>>
 </div>
+<% if (writeId) { %>
+    <form action="/delete_component" method="post">
+        <input type="text" name="id" id="id" value=<%= data["id"] %> hidden>
+        <input type="text" name="writeId" id="writeId" value=<%= writeId %> hidden>
+        <input type="text" name="pageId" id="pageId" value=<%= pageId %> hidden>
+        <input class="delete-button" type="submit" value="X"/>
+    </form>
+<% } %>

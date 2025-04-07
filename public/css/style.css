@@ -13,6 +13,7 @@
     --border-radius: 10px;
     --gap: 30px;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +21,12 @@
     font-family: var(--ff);
     font-weight: 200;
 }
+
 body {
     width: 100vw;
     height: 100%;
     background-color: var(--light-blue);
-    
+
     padding: 50px 10px;
 
     display: flex;
@@ -33,17 +35,20 @@ body {
 
     gap: var(--gap);
 }
+
 body h1 {
     color: var(--black);
 }
+
 .button {
-    height: 80px;
-    width: 80%;
-    max-width: 300px;
+    width: 20%;
+    min-width: fit-content;
+    max-width: 50%;
     border: none;
     border-radius: var(--border-radius);
     color: var(--white);
-    font-size: var(--fs2);
+    font-size: min(5vw, 200%);
+    padding: 1vh;
 }
 
 .button:hover {
@@ -51,7 +56,7 @@ body h1 {
     transition: all ease 0.1s;
 }
 
-.homepage-button-container{
+.homepage-button-container {
     width: 100%;
     padding: 10px;
     display: flex;
@@ -59,4 +64,62 @@ body h1 {
     align-items: center;
     gap: var(--gap);
     margin: 60px 0;
+}
+
+.content {
+    margin: 0 auto;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1vh;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.copy-id {
+    width: fit-content;
+
+    padding: 10px;
+    background-color: var(--dark-blue);
+    color: white;
+
+    input {
+        width: calc(100% - 10px);
+        background-color: inherit;
+        color: inherit;
+    }
+}
+
+#add-button {
+    margin-top: 1vh;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+
+    input {
+        margin-left: 10px;
+    }
+}
+
+.buttons-form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-input {
+    min-width: fit-content;
+    max-width: 30%;
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--orange);
+    font-size: min(3vw, 100%);
+    padding: 1vh;
 }

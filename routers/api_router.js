@@ -93,13 +93,43 @@ router.post("/create_component", async (req, res) => {
     const data = {};
     if (text) {
         data["type"] = "text";
+        data["text"] = text;
     } else if (link) {
         data["type"] = "link";
+        data["link"] = link
     } else if (image_link) {
         data["type"] = "image";
+        data["image_link"] = image_link
     }
 
     const success = await bdd.createComponent(project.id, parseInt(pageId), index, JSON.stringify(data));
+
+    if (!success) {
+        return res.sendStatus(500);
+    }
+
+    res.redirect(`/projects/${writeId}/${pageId}`);
+});
+
+router.post("/delete_component", async (req, res) => {
+    const {id, writeId, pageId} = req.body;
+
+    if (
+        !id ||
+        !writeId ||
+        isNaN(parseInt(id)) ||
+        !uuid.validate(writeId)
+    ) {
+        return res.sendStatus(400);
+    }
+
+    const project = await bdd.getProjectByWriteId(writeId);
+
+    if (!project) {
+        return res.sendStatus(401);
+    }
+
+    const success = await bdd.deleteComponent(parseInt(id));
 
     if (!success) {
         return res.sendStatus(500);
