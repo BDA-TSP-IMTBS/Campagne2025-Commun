@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+    <h1>
+        Nom du projet
+    </h1>
+    <div class="homepage-button-container">
+        <%- include('../partials/mainButton', {title: "Tréso"}); %>
+        <%- include('../partials/mainButton', {title: "Com"}); %>
+        <%- include('../partials/mainButton', {title: "Ritz"}); %>
+        <%- include('../partials/mainButton', {title: ""});%>
+    </div>
+    <%- include('../partials/addNew'); %>
+
+</body>
+</html>

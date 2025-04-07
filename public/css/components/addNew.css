@@ -1,0 +1,16 @@
+.add-new {
+    border: none;
+    background-color: var(--dark-blue);
+    border-radius: 100%;
+    width: 80px;
+    color: var(--white);
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+}
+.add-new:hover {
+    transform: scale(1.05);
+    transition: all ease 0.1s;
+}

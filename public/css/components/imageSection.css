@@ -1,0 +1,9 @@
+.image-container {
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+}
+.image-container img {
+    aspect-ratio: initial;
+    width: 100%;
+}
