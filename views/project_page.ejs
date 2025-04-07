@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
+    <title><%= name %> - <%= subname %></title>
+</head>
+<body>
+<div class="content">
+    <h1><%= name %></h1>
+    <h3><%= subname %></h3>
+
+    <a href="./">Retour menu</a>
+
+    <% objects.forEach(object => { %>
+        <% switch (object.data["type"]) {
+        case "text": %>
+        <%- include("components/text", {data: object.data}) %>
+        <% break;
+        case "image": %>
+        <%- include("components/image", {data: object.data}) %>
+        <% break;
+        case "link": %>
+        <%- include("components/link", {data: object.data}) %>
+        <% break
+        } %>
+    <% }) %>
+
+    <% if (writeId) { %>
+        <form id="create-text-form" action="/create_component" method="post">
+            <textarea name="text" id="text" placeholder="" hidden required maxlength="2000"></textarea>
+            <input value=<%= pageId %> type="text" name="pageId" hidden>
+            <input value=<%= writeId %> type="text" name="writeId" hidden>
+        </form>
+        <button id="add-text-button">Ajouter un texte</button>
+
+        <form id="create-link-form" action="/create_component" method="post">
+            <input type="text" name="link" id="link" placeholder="Nouveau lien" hidden required
+                   maxlength="200"/>
+            <input value=<%= pageId %> type="text" name="pageId" hidden>
+            <input value=<%= writeId %> type="text" name="writeId" hidden>
+        </form>
+        <button id="add-link-button">Ajouter un lien</button>
+
+        <form id="create-image-form" action="/create_component" method="post">
+            <input type="text" name="image_link" id="image_link" placeholder="Lien vers l'image" hidden required
+                   maxlength="200"/>
+            <input value=<%= pageId %> type="text" name="pageId" hidden>
+            <input value=<%= writeId %> type="text" name="writeId" hidden>
+        </form>
+        <button id="add-image-button">Ajouter une image</button>
+
+    <% } %>
+</div>
+
+<script src="/js/project.js"></script>
+</body>
+</html>

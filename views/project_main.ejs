@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/main.css" rel="stylesheet" type="text/css"/>
     <title><%= name %></title>
-  </head>
-  <body>
-    <div class="content">
-      <h1><%= name %></h1>
+</head>
+<body>
+<div class="content">
+    <h1><%= name %></h1>
 
-      <% buttons.forEach(button => { %>
-        <%- include("components/button", {text: button.text, link: button.link}); %>
-      <% }); %>
+    <div class="copy-id">
+        <% if(writeId) { %>
+            <label for="write-id-field">Copier l'URL pour éditer le projet</label><br/>
+            <input type="text" name="write-id-field" value=<%= URL + 'projects/' + writeId %>/>
+            <br/><br/>
+        <% } %>
+
+        <label for="read-id-field">Copier l'URL pour voir le projet (lecture seulement)</label><br/>
+        <input type="text" name="read-id-field" value=<%= URL + 'projects/' + readId %>/>
     </div>
-  </body>
+
+    <% buttons.forEach(button => { %>
+        <%- include("components/button", {name: button.name, writeId: writeId, id: button.id, url: URL + 'projects/' + (writeId ? writeId : readId) + "/" + button.id}); %>
+    <% }); %>
+
+    <% if (writeId) { %>
+        <form id="create-button-form" action="/create_button" method="post">
+            <input type="text" name="name" id="button-name" placeholder="Nom du nouveau bouton" hidden required
+                   maxlength="20"/>
+            <input value=<%= writeId %> type="text" id="writeId" name="writeId" hidden>
+        </form>
+        <button id="add-button">Ajouter un bouton</button>
+    <% } %>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
 </html>

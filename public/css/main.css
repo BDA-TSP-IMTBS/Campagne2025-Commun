@@ -9,8 +9,36 @@ body {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   h1 {
     text-align: center;
+  }
+}
+
+.copy-id {
+  width: fit-content;
+
+  padding: 10px;
+  background-color: #4b7bec;
+  color: white;
+
+  input {
+    width: calc(100% - 10px);
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+#add-button {
+  margin-top: 1vh;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+
+  input {
+    margin-left: 10px;
   }
 }

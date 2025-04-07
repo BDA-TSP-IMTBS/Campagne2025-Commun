@@ -14,15 +14,19 @@ model Project {
 	write_id	String	@unique
 	buttons		Button[]
 	objects		Object[]
+
+	@@map("projects")
 }
 
 model Button {
 	id		Int	@id	@default(autoincrement())
-	name		String	@unique
+	name		String
 	link		String
 	project		Project	@relation(fields: [projectId], references: [id])
 	projectId	Int
 	objects		Object[]
+
+	@@map("buttons")
 }
 
 model Object {
@@ -33,4 +37,6 @@ model Object {
 	buttonId	Int
 	project		Project @relation(fields: [projectId], references: [id])
 	projectId	Int
+
+	@@map("objects")
 }

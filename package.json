@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "node app.js",
-    "gen_db": "npx prisma generate"
+    "gen_db": "npx prisma generate && npx prisma db push"
   },
   "author": "rootcan,jafar134,spouirk",
   "license": "ISC",
