@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.render("pages/index");
 });
 
+app.get("/projet", (req, res) => {
+  res.render("pages/projet");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}/`);
 });
